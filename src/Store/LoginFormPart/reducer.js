@@ -10,7 +10,8 @@ const initState = {
             "actor": "password_input",
             "previewName": "Пароль"
         }
-    ]
+    ],
+    "button_send": "login"
 }
 
 export default function reducer(state = initState, action){

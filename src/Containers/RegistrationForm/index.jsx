@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { bindActionCreators } from 'redux';
+import {bindActionCreators} from 'redux';
 
 import {connect} from 'react-redux';
 import Form from '../Form';
@@ -8,14 +8,15 @@ import * as UserCredentialsActions from '../../Store/UserCredentials/actions';
 
 import './style.scss';
 
-class RegistrationPageContainer extends Component{
+class RegistrationPageContainer extends Component {
     render = () => {
         const {fields} = this.props.store;
         return (
             <div className="registration_page_container">
                 <div className="block_actions">
                     <div className="header">Регистрация</div>
-                    <Form ActionsEntry={this.props.userCredActions.ActionOfChangeStateCredentials} fields={fields}/>
+                    <Form ActionsEntry={this.props.userCredActions.ActionOfChangeStateCredentials} fields={fields}
+                          button={this.props.store.button_send}/>
                 </div>
             </div>
         )
@@ -28,7 +29,7 @@ function mapStore(state) {
     }
 }
 
-function mapDispatches(dispatch){
+function mapDispatches(dispatch) {
     return {
         userCredActions: bindActionCreators(UserCredentialsActions, dispatch)
     }

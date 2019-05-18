@@ -15,13 +15,14 @@ const initState = {
             "actor": "email_input",
             "previewName": "Email"
         },
-    ]
+    ],
+    "button_send": "register"
 }
 
-export default function reducer (state = initState, action){
+export default function reducer(state = initState, action) {
     const {type, payload} = action;
 
-    switch(type){
+    switch (type) {
         default:
             return state;
     }

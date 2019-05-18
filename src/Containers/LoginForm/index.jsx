@@ -2,20 +2,21 @@ import React, {Component} from 'react';
 
 import {connect} from 'react-redux';
 import Form from '../Form';
-import { bindActionCreators } from 'redux';
+import {bindActionCreators} from 'redux';
 
 import * as UserCredentialsActions from '../../Store/UserCredentials/actions';
 
 import './style.scss';
 
-class LoginForm extends Component{
+class LoginForm extends Component {
     render = () => {
         const {fields} = this.props.loginStore;
-        return(
+        return (
             <div className="login_form_container">
                 <div className="block_authentification">
                     <div className="header">Вход</div>
-                    <Form fields={fields} ActionsEntry={this.props.userActions.ActionOfChangeStateCredentials}/>
+                    <Form fields={fields} ActionsEntry={this.props.userActions.ActionOfChangeStateCredentials}
+                          button={this.props.loginStore.button_send}/>
                 </div>
             </div>
         )
@@ -24,12 +25,11 @@ class LoginForm extends Component{
 
 function mapStore(state) {
     return {
-        store: state.UI_userState,
         loginStore: state.LPI_loginPageState
     }
 }
 
-function mapDispatches(dispatch){
+function mapDispatches(dispatch) {
     return {
         userActions: bindActionCreators(UserCredentialsActions, dispatch)
     }

@@ -6,6 +6,7 @@ import MI_mapState from '../MapPart/reducer';
 import HI_historyState from '../HistoryPart/reducer';
 import LPI_loginPageState from '../LoginFormPart/reducer';
 import RPI_registrationPageState from '../RegistrationFormPart/reducer';
+import UCI_userCredentialsState from '../UserCredentials/reducer';
 
 
 export default combineReducers({
@@ -14,5 +15,6 @@ export default combineReducers({
     MI_mapState,
     HI_historyState,
     LPI_loginPageState,
-    RPI_registrationPageState
+    RPI_registrationPageState,
+    UCI_userCredentialsState
 })

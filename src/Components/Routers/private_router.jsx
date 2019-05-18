@@ -1,25 +1,32 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import {connect} from 'react-redux';
 
 import {Route, Redirect} from 'react-router-dom';
 
-class PrivateRoute extends Component {
-    render = () => {
-        const {isAuthentificated} = this.props.store;
-        console.log(this.props);
-        return (
-            isAuthentificated ?
-            <Route {...this.props}/>
-            :
-            <Redirect to='/login'/>
-        )
-    }
-}
+
+const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => (
+    <Route
+        {...rest}
+        render={props =>
+            // console.log(props)
+            isAuthenticated ? (
+                <Component {...rest} {...props} />
+            ) : (
+                <Redirect
+                    to={{
+                        pathname: '/login',
+                        state: {from: props.location}
+                    }}
+                />
+            )
+        }
+    />
+);
 
 function mapStore(state){
     return {
-        store: state.UI_userState
+        store: state.UI_userState.isAuthentificated
     }
 }
 

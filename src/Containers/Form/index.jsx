@@ -1,25 +1,32 @@
 import React, {Component} from 'react';
 
+import './style.scss';
+
 class Form extends Component{
     configureField = (name, previewName, actor, index) => {
+        let param = ``;
+
+        console.log(param)
         return (
             <div className="field_section" key={index}>
                 <div className={"field_" + name + "_name"}>{previewName}</div>
-                <div className={"field_" + name + "_handler"} action={actor}/>
+                <input className={"field_" + name + "_handler"} action={actor} onChange={this.props.ActionsEntry}/>
             </div>
-            
         )
     }
 
     render = () => {
-        const {fields} = this.props.fields;
+        console.log(this.props);
+        const {fields} = this.props;
 
         return (
             <div className="form_container">
                 {
                     fields != null ?
                     fields.map((field, index) => {
-                        this.configureField(field.name, field.previewName, field.actor, index)
+                        return (
+                            this.configureField.bind(this)(field.name, field.previewName, field.actor, index)
+                        )
                     })
                     :
                     <div className="error_creating">Error of generation form</div>

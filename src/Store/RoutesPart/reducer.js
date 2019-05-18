@@ -4,10 +4,8 @@ const initState = {
             "id": 0,
             "name": "test",
             "points": [
-                [
-                    {"point":[82.92646, 55.02942],"type":"wayPoint"},
-                    {"point":[82.92624, 55.02947],"type":"wayPoint"},
-                    {"point":[82.92635, 55.02947],"type":"wayPoint"}]
+                
+                    {"point":[55.02942,82.92646],"type":"wayPoint"},{"point":[55.02947,82.92624],"type":"wayPoint"},{"point":[55.02947,82.92635],"type":"wayPoint"}
             ]
         }
     ]

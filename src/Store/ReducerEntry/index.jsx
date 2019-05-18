@@ -8,6 +8,7 @@ import RPI_registrationPageState from '../RegistrationFormPart/reducer';
 import UCI_userCredentialsState from '../UserCredentials/reducer';
 import AU_authState from '../Auth/reducer'
 
+import RPI_routesPartState from '../RoutesPart/reducer';
 
 export default combineReducers({
     MPI_mainPageState,
@@ -16,5 +17,6 @@ export default combineReducers({
     LPI_loginPageState,
     RPI_registrationPageState,
     UCI_userCredentialsState,
-    AU_authState
+    AU_authState,
+    RPI_routesPartState
 })

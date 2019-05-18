@@ -23,10 +23,16 @@
     -moz-appearance: none;
 }
 
+.field {
+    display: inline-block;
+    width: 100%;
+}
+
 .field_section{
     display: flex;
     flex-direction: row;
-
+    justify-content: center;
+    width: 300px;
     div {
         margin-right: 15px;
     }

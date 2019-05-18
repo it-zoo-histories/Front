@@ -1,7 +1,5 @@
-import React,{Component} from 'react';
-import { connect } from 'net';
-
-
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
 
 class MainPageContainer extends Component{
     render = () => {
@@ -19,4 +17,10 @@ function mapStore(state) {
     }
 }
 
-export default connect(mapStore)(MainPageContainer)
+function mapDispatches(dispatch){
+    return {
+
+    }
+}
+
+export default connect(mapStore, mapDispatches)(MainPageContainer)

@@ -1,15 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import {BrowserRouter} from 'react-router-dom';
-import Router from './Components/Router';
+import Routers from './Components/Routers/router';
+
+import CreateStore from './Store';
+import {Provider} from 'react-redux';
+
+var storage = CreateStore();
+
 
 ReactDOM.render(
-<BrowserRouter>
-    <Router />
-</BrowserRouter>, document.getElementById('root'));
+<Provider store={storage}>
+    <Routers />
+</Provider>
+, document.getElementById('root'));
 
 serviceWorker.unregister();

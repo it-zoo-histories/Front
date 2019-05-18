@@ -13,7 +13,13 @@ class Form extends Component {
         return (
             <div className="field_section" key={index}>
                 {/*<div className={"field_" + name + "_name"}>{previewName}</div>*/}
-                <input className={"field_" + name + "_handler"} action={actor} onChange={this.props.ActionsEntry}/>
+                {
+                    actor === "password_input" ? 
+                    <input className={"field_" + name + "_handler"} type="password" action={actor} onChange={this.props.ActionsEntry}/>
+                    :
+                    <input className={"field_" + name + "_handler"} action={actor} onChange={this.props.ActionsEntry}/>
+
+                }
             </div>
         )
     }

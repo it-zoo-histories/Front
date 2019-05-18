@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import MapContainer from '../MapContainer';
+import SearchPanel from "../../Components/SearchPanel/SearchPanel";
+import Header from "../../Components/Header/Header";
 
-class MainPageContainer extends Component{
+class MainPageContainer extends Component {
     render = () => {
         return (
             <div className="main_page_container">
-                <MapContainer />
+                <Header/>
+                <SearchPanel/>
+                <MapContainer/>
             </div>
         )
     }
@@ -18,10 +22,8 @@ function mapStore(state) {
     }
 }
 
-function mapDispatches(dispatch){
-    return {
-
-    }
+function mapDispatches(dispatch) {
+    return {}
 }
 
 export default connect(mapStore, mapDispatches)(MainPageContainer)

@@ -14,10 +14,12 @@ class Form extends Component {
             <div className="field_section" key={index}>
                 {/*<div className={"field_" + name + "_name"}>{previewName}</div>*/}
                 {
-                    actor === "password_input" ? 
-                    <input className={"field_" + name + "_handler"} type="password" action={actor} onChange={this.props.ActionsEntry}/>
-                    :
-                    <input className={"field_" + name + "_handler"} action={actor} onChange={this.props.ActionsEntry}/>
+                    actor === "password_input" ?
+                        <input className={"form-control"} type="password" action={actor}
+                               onChange={this.props.ActionsEntry} placeholder={name}/>
+                        :
+                        <input className={"form-control"} action={actor}
+                               onChange={this.props.ActionsEntry} placeholder={name}/>
 
                 }
             </div>
@@ -29,7 +31,6 @@ class Form extends Component {
         let action = target.getAttribute("name");
         switch (action) {
             case "login":
-                // const loginRequest = Object.assign({}, this.props.credentials);
                 let loginRequest = {
                     email: this.props.credentials.name,
                     password: this.props.credentials.password
@@ -39,7 +40,6 @@ class Form extends Component {
             case "register":
                 const signUpRequest = Object.assign({}, this.props.credentials);
                 this.props.authActions.signup(signUpRequest);
-                // this.props.loginFunctions.inputPassword(target.value);
                 break;
         }
     };
@@ -58,7 +58,9 @@ class Form extends Component {
                                     this.configureField.bind(this)(field.name, field.previewName, field.actor, index)
                                 )
                             })}
-                            <button className="btn btn-block btn-primary" name={this.props.button} onClick={this.handleAuthAction}> "Ok"</button>
+                            <button className="btn btn-block btn-primary" name={this.props.button}
+                                    onClick={this.handleAuthAction}> Ok
+                            </button>
                         </div>
 
                         :

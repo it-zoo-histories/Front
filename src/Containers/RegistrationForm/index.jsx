@@ -7,7 +7,8 @@ import Form from '../Form';
 import * as UserCredentialsActions from '../../Store/UserCredentials/actions';
 
 import './style.scss';
-import {Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
+import SocialSignup from "../../Components/SocialSignUp/SocialSignUp";
 
 class RegistrationPageContainer extends Component {
     render = () => {
@@ -23,9 +24,16 @@ class RegistrationPageContainer extends Component {
         return (
             <div className="registration_page_container">
                 <div className="block_actions">
-                    <div className="header">Регистрация</div>
+                    <div className="header">Регистрация в Stopy-singer</div>
+                    <SocialSignup/>
+                    <div className="or-separator">
+                        <span className="or-text">OR</span>
+                    </div>
                     <Form ActionsEntry={this.props.userCredActions.ActionOfChangeStateCredentials} fields={fields}
                           button={this.props.store.button_send}/>
+                    <div className="link">
+                        <span className="login-link">Already have an account? <Link to="/login">Login!</Link></span>
+                    </div>
                 </div>
             </div>
         )

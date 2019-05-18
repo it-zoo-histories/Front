@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import MapContainer from '../MapContainer';
+import SearchPanel from "../../Components/SearchPanel/SearchPanel";
+import Header from "../../Components/Header/Header";
 
 // import * as SocketActions from '../../Store/UserSocket/actions';
 import { bindActionCreators } from 'redux';
@@ -41,7 +43,9 @@ class MainPageContainer extends Component{
         // console.log("stores: ", this.props);
         return (
             <div className="main_page_container">
-                <MapContainer />
+                <Header/>
+                <SearchPanel/>
+                <MapContainer/>
             </div>
         )
     }

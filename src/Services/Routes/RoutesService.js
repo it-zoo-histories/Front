@@ -1,4 +1,4 @@
-import { APIRoutes, APIRoutesGetRouteByID, APIRoutesGetLast } from "../../Store/API/routes";
+import { APIRoutesGetRouteByID, APIRoutesGetLast } from "../../Store/API/routes";
 import request_get from "../../Store/API/request_get";
 
 class RoutesService {

@@ -1,17 +1,18 @@
-import RoutesService from "../../Services/Routes/service";
-import { GET_ROUTES_FROM_BACKEND } from "./constants";
+import RoutesService from "../../Services/Routes/RoutesService";
+import { GET_ROUTE_FROM_BACKEND } from "./constants";
 
 export function GetRoutesFromBackend(){
     return async (dispatch, getState) => {
         
         const fetchedRoutes = RoutesService.GetLastRoutes("hackaton");
-        dispatch(setupFetchedDatas(fetchedRoutes))
-    }
+        fetchedRoutes.then(resSuccess => 
+        dispatch(setupFetchedDatas(resSuccess))
+            )    }
 }
 
 function setupFetchedDatas (data) {
     return {
-        type: GET_ROUTES_FROM_BACKEND,
+        type: GET_ROUTE_FROM_BACKEND,
         payload: data
     }
 }

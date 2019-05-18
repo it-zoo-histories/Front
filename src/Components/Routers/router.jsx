@@ -19,7 +19,7 @@ export default function Routers() {
             <Switch>
                 <Route path="/login" component={LoginForm}/>
                 <Route path="/registration" component={RegistrationForm}/>
-                <Route exact path="/" component={MainPageContainer}/>                
+                <PrivateRoute exact path="/" component={MainPageContainer}/>
                 <Route component={ErrorPage} />
             </Switch>
         </Router>

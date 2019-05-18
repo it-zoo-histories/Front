@@ -12,7 +12,7 @@ class Form extends Component {
         console.log(param)
         return (
             <div className="field_section" key={index}>
-                <div className={"field_" + name + "_name"}>{previewName}</div>
+                {/*<div className={"field_" + name + "_name"}>{previewName}</div>*/}
                 <input className={"field_" + name + "_handler"} action={actor} onChange={this.props.ActionsEntry}/>
             </div>
         )
@@ -27,7 +27,7 @@ class Form extends Component {
                 let loginRequest = {
                     email: this.props.credentials.name,
                     password: this.props.credentials.password
-                }
+                };
                 this.props.authActions.login(loginRequest);
                 break;
             case "register":
@@ -52,7 +52,7 @@ class Form extends Component {
                                     this.configureField.bind(this)(field.name, field.previewName, field.actor, index)
                                 )
                             })}
-                            <button name={this.props.button} onClick={this.handleAuthAction}> "Ok"</button>
+                            <button className="btn btn-block btn-primary" name={this.props.button} onClick={this.handleAuthAction}> "Ok"</button>
                         </div>
 
                         :

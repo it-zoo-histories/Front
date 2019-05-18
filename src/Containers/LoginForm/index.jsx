@@ -7,9 +7,17 @@ import {bindActionCreators} from 'redux';
 import * as UserCredentialsActions from '../../Store/UserCredentials/actions';
 
 import './style.scss';
+import {Redirect} from "react-router-dom";
 
 class LoginForm extends Component {
     render = () => {
+        if (this.props.isAuthenticated) {
+            return <Redirect
+                to={{
+                    pathname: "/",
+                    state: {from: this.props.location}
+                }}/>;
+        }
         const {fields} = this.props.loginStore;
         return (
             <div className="login_form_container">
@@ -25,7 +33,8 @@ class LoginForm extends Component {
 
 function mapStore(state) {
     return {
-        loginStore: state.LPI_loginPageState
+        loginStore: state.LPI_loginPageState,
+        isAuthenticated: state.AU_authState.isAuthenticated
     }
 }
 

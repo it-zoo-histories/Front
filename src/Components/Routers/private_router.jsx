@@ -28,7 +28,7 @@ const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => {
 
 function mapStore(state) {
     return {
-        store: state.AU_authState.isAuthenticated
+        isAuthenticated: state.AU_authState.isAuthenticated
     }
 }
 

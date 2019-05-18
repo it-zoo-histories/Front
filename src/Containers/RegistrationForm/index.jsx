@@ -7,9 +7,18 @@ import Form from '../Form';
 import * as UserCredentialsActions from '../../Store/UserCredentials/actions';
 
 import './style.scss';
+import {Redirect} from "react-router-dom";
 
 class RegistrationPageContainer extends Component {
     render = () => {
+        console.log("Render signup");
+        if (this.props.isAuthenticated) {
+            return <Redirect
+                to={{
+                    pathname: "/",
+                    state: {from: this.props.location}
+                }}/>;
+        }
         const {fields} = this.props.store;
         return (
             <div className="registration_page_container">
@@ -25,7 +34,8 @@ class RegistrationPageContainer extends Component {
 
 function mapStore(state) {
     return {
-        store: state.RPI_registrationPageState
+        store: state.RPI_registrationPageState,
+        isAuthenticated: state.AU_authState.isAuthenticated
     }
 }
 

@@ -26,6 +26,10 @@ body{
     cursor: pointer;
 }
 
+.name {
+    margin-left: 10px;
+}
+
 .fa-home {
     font-size:22px;
 }

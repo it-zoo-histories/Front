@@ -66,12 +66,12 @@ class MapContainer extends Component{
         
         return (
             <div className="map_container">
-                <div className="header">Route Signaller</div>
+                {/*<div className="header">Route Signaller</div>*/}
                 <YMaps 
                 onApiAvaliable={ymaps => this.handleApiAvaliable(ymaps)}
                 >
-                    <Map width={1200}
-                    height={500} 
+                    <Map width={window.innerWidth - 100}
+                    height={window.innerHeight - 280}
                     state={{center: [55.02942,82.92646], zoom: 16 }} onClick={this.handleClick.bind(this)}
                     instanceRef={ref => (this.map = ref)}
                     >

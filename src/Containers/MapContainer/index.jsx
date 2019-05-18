@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { YMaps, Map, RouteEditor } from 'react-yandex-maps'; 
+import { YMaps, Map, RouteEditor, GeoObject } from 'react-yandex-maps'; 
 
 import {connect} from 'react-redux';
 
@@ -35,6 +35,8 @@ class MapContainer extends Component{
         })
       };
 
+    
+
     addRouteToMap = (ymap, route) => {
 
         const balloonContentBodyLayout = ymap.templateLayoutFactory.createClass(
@@ -61,9 +63,25 @@ class MapContainer extends Component{
           });
     }
 
+    addObjectOnMap(objectCoords){
+        if(this.map){
+
+            
+            this.map.geoObjects.add(GeoObject({
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [objectCoords.latitude, objectCoords.longitude]
+                }
+            }))
+        }
+    }
+
   
     render = () => {
-        
+        const {longitude, latitude} = this.props.storePos;
+
+        // this.addObjectOnMap({longitude: longitude, latitude: latitude})
+
         return (
             <div className="map_container">
                 {/*<div className="header">Route Signaller</div>*/}
@@ -85,7 +103,8 @@ class MapContainer extends Component{
 
 function mapStore(state){
     return {
-        store: state.RPI_routesPartState
+        store: state.RPI_routesPartState,
+        storePos: state.PUI_positionUser
     }
 }
 

@@ -1,5 +1,16 @@
 const request_post = (options) => {
-    fetch(options.url, {method: "POST", body: options.body})
+
+    console.log("[REQUEST_POST]: ", options.url, {method: "POST", body: JSON.stringify(options.body.payload), 
+    headers: {
+        "Content-Type": "application/json"
+    }
+    })
+    fetch(options.url, {method: "POST", body: JSON.stringify(options.body.payload), 
+    headers: {
+        "Content-Type": "application/json"
+    },
+    mode: 'cors'
+    })
     .then( response =>{
         if (!response.ok){
             return Promise.reject("error send data")

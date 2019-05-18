@@ -1,5 +1,7 @@
 import { API_SOCKET_URL, ADD_NEW_CONNECTION, SEND_NEW_POSITION } from "./constants";
 
+import Position from '../../Services/Position/entry';
+
 export function openRoomToConnect(){
     return dispatch => {
         let socket = new WebSocket(API_SOCKET_URL);
@@ -14,9 +16,20 @@ export function openRoomToConnect(){
     }
 }
 
+export function SendCurrentPosition(currentPosition){
+    return dispatch => {
+        let serviceRequested = Position.sendCurrentPosition(currentPosition);
+
+        serviceRequested
+        .then(resp => console.log("success send"))
+        .catch(err => console.log(err))
+    }
+}
+
 export function sendDataToRoom(data){
     return dispatch => {
         dispatch(addNewData(data))
+        // dispatch()
     }
 }
 

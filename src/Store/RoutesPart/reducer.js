@@ -2,7 +2,7 @@ import { GET_ROUTE_FROM_BACKEND } from "./constants";
 
 const initState = {
     "route": {
-        id: 0,
+        id: "hackaton",
         "name": 'test',
     },
     "points": []

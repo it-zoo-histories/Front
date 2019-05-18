@@ -8,6 +8,8 @@ import Header from "../../Components/Header/Header";
 import { bindActionCreators } from 'redux';
 import * as PositionActions from '../../Store/UserPosition/actions';
 import * as SendPosition from '../../Store/UserSocket/actions';
+import {HistoryList} from "../../Components/HistoryList/HistoryList";
+import HistoryContainer from "../HistoryContainer";
 
 class MainPageContainer extends Component{
     constructor(props){
@@ -45,6 +47,7 @@ class MainPageContainer extends Component{
             <div className="main_page_container">
                 <Header/>
                 <SearchPanel/>
+                <HistoryContainer/>
                 <MapContainer/>
             </div>
         )

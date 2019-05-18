@@ -54,7 +54,9 @@ export function getCurrentUser() {
 
             const fetchedUser = AuthService.getCurrentUser();
 
-            dispatch({type: types.GET_CURRENT_USER, currentUser: fetchedUser})
+            let response = await fetchedUser;
+
+            dispatch({type: types.GET_CURRENT_USER, currentUser: response})
         } catch (error) {
             console.error(error)
         }

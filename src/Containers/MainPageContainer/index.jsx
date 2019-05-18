@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import MapContainer from '../MapContainer';
 
 class MainPageContainer extends Component{
     render = () => {
         return (
             <div className="main_page_container">
-                <h1>Start Coding</h1>
+                <MapContainer />
             </div>
         )
     }

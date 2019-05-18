@@ -5,11 +5,12 @@ import {connect} from 'react-redux';
 import {Route, Redirect} from 'react-router-dom';
 
 
-const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => (
+const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => {
+    console.log("Private route: Component: ", Component, ", isAuthentificated: ", isAuthenticated, " props: ", rest)
+    return(
     <Route
         {...rest}
         render={props =>
-            // console.log(props)
             isAuthenticated ? (
                 <Component {...rest} {...props} />
             ) : (
@@ -22,7 +23,8 @@ const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => (
             )
         }
     />
-);
+    )
+};
 
 function mapStore(state){
     return {

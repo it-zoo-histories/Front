@@ -3,7 +3,10 @@ import React, {Component} from 'react';
 import { YMaps, Map, RouteEditor } from 'react-yandex-maps'; 
 import {connect} from 'react-redux';
 
+import * as RoutesActions from '../../Store/RoutesPart/actions';
+
 import './style.scss';
+import { bindActionCreators } from 'redux';
 
 class MapContainer extends Component{
     constructor(props){
@@ -17,7 +20,12 @@ class MapContainer extends Component{
         console.log("Map clicked: ", event.target)   
     }
 
+    componentDidMount(){
+        this.props.routesService.GetRoutesFromBackend()
+    }
+
     handleApiAvaliable = ymaps => {
+
 
         const {routes} = this.props.store;
 
@@ -71,15 +79,16 @@ class MapContainer extends Component{
     }
 
     render = () => {
+        
         return (
             <div className="map_container">
                 <div className="header">Route Signaller</div>
                 <YMaps 
                 onApiAvaliable={ymaps => this.handleApiAvaliable(ymaps)}
                 >
-                    <Map width={800}
+                    <Map width={1200}
                     height={500} 
-                    state={{center: [55.013571, 83.057512], zoom: 10 }} onClick={this.handleClick.bind(this)}
+                    state={{center: [55.02942,82.92646], zoom: 16 }} onClick={this.handleClick.bind(this)}
                     instanceRef={ref => (this.map = ref)}
                     >
                         <RouteEditor />
@@ -96,4 +105,10 @@ function mapStore(state){
     }
 }
 
-export default connect(mapStore)(MapContainer)
+function mapDispatches(dispatch){
+    return {
+        routesService: bindActionCreators(RoutesActions, dispatch)
+    }
+}
+
+export default connect(mapStore, mapDispatches)(MapContainer)

@@ -1,6 +1,6 @@
 const initState = {
     "currentUser": null,
-    "isAuthentificated": true,
+    "isAuthentificated": false,
     "accessToken": null
 }
 

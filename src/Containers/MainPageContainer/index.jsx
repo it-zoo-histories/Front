@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import MapContainer from '../MapContainer';
 import SearchPanel from "../../Components/SearchPanel/SearchPanel";
 import Header from "../../Components/Header/Header";
+import './style.scss'
 
 // import * as SocketActions from '../../Store/UserSocket/actions';
 import { bindActionCreators } from 'redux';
@@ -81,8 +82,10 @@ class MainPageContainer extends Component{
         return (
             <div className="main_page_container">
                 <Header/>
+                <div className="hor_container">
                 <SearchPanel/>
                 <HistoryContainer/>
+                </div>
                 <MapContainer/>
             </div>
         )

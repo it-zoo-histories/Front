@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import React from 'react';
 import HistoryBlock from "../HistoryBlock/HistoryBlock";
-
+import './styles.css'
 
 export class HistoryList extends Component {
 
@@ -23,12 +23,15 @@ export class HistoryList extends Component {
         if (this.props.items) {
             console.log("items", this.props.items)
             return (
+                <div className="container-history">
+                    <div className="title-history"> История</div>
                 <div className="history">
                     {
                         this.props.items.map(function (item) {
                         return <HistoryBlock value={item.name}/>
                     })
                     }
+                </div>
                 </div>
             )
         } else {

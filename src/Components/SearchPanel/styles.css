@@ -31,6 +31,7 @@ body{
     top:48px;
     height:48px;
     transition:opacity 0.4s linear ,visibility 0.4s linear 0s;
+    margin-left: 580px;
 }
 .search-box > #search {
     width:640px;

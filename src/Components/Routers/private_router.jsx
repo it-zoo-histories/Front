@@ -6,7 +6,7 @@ import {Route, Redirect} from 'react-router-dom';
 
 
 const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => {
-    console.log("Private route: Component: ", Component, ", isAuthentificated: ", isAuthenticated, " props: ", rest)
+    // console.log("Private route: Component: ", Component, ", isAuthentificated: ", isAuthenticated, " props: ", rest)
     return (
         <Route
             {...rest}

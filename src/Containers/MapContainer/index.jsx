@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import { YMaps, Map, RouteEditor } from 'react-yandex-maps'; 
+
 import {connect} from 'react-redux';
 
 import * as RoutesActions from '../../Store/RoutesPart/actions';
@@ -25,16 +26,17 @@ class MapContainer extends Component{
     }
 
     handleApiAvaliable = ymaps => {
+        console.log("create connect", this.props.store)
+        const {route, points} = this.props.store;
 
-
-        const {routes} = this.props.store;
-
-        for(let i = 0; i < routes.length; i++){
-            this.addRouteToMap(ymaps, routes[i])
-        }
+        this.addRouteToMap(ymaps, {
+            name: route.name,
+            points: points
+        })
       };
 
     addRouteToMap = (ymap, route) => {
+
         const balloonContentBodyLayout = ymap.templateLayoutFactory.createClass(
         `<div>${route.name}</div>`
       ); 
@@ -59,25 +61,7 @@ class MapContainer extends Component{
           });
     }
 
-    mapAvailable = (ymap) => {
-
-        console.log("start route creating", ymap)
-        let param = ymap.templateLayoutFactory.createClass(
-            "<div>Test</div>"
-          );
-        ymap.route(
-            [],{
-               param 
-            }).then((route) => {
-            route.getPaths().options.set({
-                strokeColor: "0000ffff",
-                opacity: 0.9
-              });
-            
-            this.map.geoObjects.add(route)
-        }) 
-    }
-
+  
     render = () => {
         
         return (

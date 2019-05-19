@@ -1,4 +1,4 @@
-import { GET_ROUTE_FROM_BACKEND } from "./constants";
+import {GET_ROUTE_FROM_BACKEND} from "./constants";
 
 const initState = {
     "route": {
@@ -9,14 +9,14 @@ const initState = {
 }
 
 
-export default function reducer(state = initState, action){
+export default function reducer(state = initState, action) {
     const {type, payload} = action;
 
-    switch(type){
+    switch (type) {
         case GET_ROUTE_FROM_BACKEND:
             console.log("[REDUCER_ROUTES]: ", payload);
-            return {...state, points: payload}
-        default: 
+            return {...state, points: payload.data, route: payload.route}
+        default:
             return state;
     }
 }

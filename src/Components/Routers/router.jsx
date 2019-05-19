@@ -20,7 +20,7 @@ export default function Routers() {
             <Switch>
                 <Route path="/login" component={LoginForm}/>
                 <Route path="/signup" component={RegistrationForm}/>
-                <PrivateRoute exact path="/" component={MainPageContainer}/>
+                <Route exact path="/" component={MainPageContainer}/>
                 <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}/>
                 <Route component={ErrorPage} />
             </Switch>

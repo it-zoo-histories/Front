@@ -24,6 +24,7 @@ class MainPageContainer extends Component {
 
     componentDidMount() {
         // this.props.actions.openRoomToConnect()
+        setInterval(this.sendStart(this.props.userStore.route.id), 5000)
     }
 
     sendStart = (id) => {
@@ -123,7 +124,6 @@ class MainPageContainer extends Component {
     }
 
     render = () => {
-        setInterval(this.sendStart(this.props.userStore.route.id), 5000)
         // console.log("stores: ", this.props);
         const {status} = this.props.currentPosition;
 

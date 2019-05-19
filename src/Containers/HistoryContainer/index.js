@@ -13,7 +13,7 @@ class HistoryContainer extends Component {
         // await this.props.authActions.getCurrentUser();
         // this.props.historyActions.fetchedHistory(this.props.authState.currentUser.id)
 
-        this.historyActions.GetHistoryCurrentUser();
+        this.props.historyActions.GetHistoryCurrentUser();
     }
 
     render() {

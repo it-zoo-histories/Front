@@ -9,12 +9,17 @@ import MapGoogle from '../GoogleMap';
 import {bindActionCreators} from 'redux';
 import * as PositionActions from '../../Store/UserPosition/actions';
 import * as SendPosition from '../../Store/UserSocket/actions';
+import * as HistoryActions from '../../Store/HistoryPart/actions'
 import HistoryContainer from "../HistoryContainer";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import {HistoryList} from "../../Components/HistoryList/HistoryList";
 
 class MainPageContainer extends Component {
     constructor(props) {
         super(props);
         this.geolocation = navigator.geolocation;
+        this.close = this.close.bind(this);
     }
 
     componentDidMount() {
@@ -113,6 +118,10 @@ class MainPageContainer extends Component {
         }
     }
 
+    close(event) {
+        this.props.historyActions.ChangeStateHistoryBlock(false)
+    }
+
     render = () => {
         setInterval(this.sendStart(this.props.userStore.route.id), 1000)
         // console.log("stores: ", this.props);
@@ -120,16 +129,46 @@ class MainPageContainer extends Component {
 
         this.checkStatus(status);
 
-        return (
-            <div className="main_page_container">
-                <Header/>
-                <div className="hor_container">
-                    <SearchPanel/>
-                    <HistoryContainer/>
+        const {blockOpen} = this.props.historyState;
+        console.log("Open", blockOpen);
+        if (blockOpen) {
+            return (
+                <div className="main_page_container">
+                    <Header/>
+                    <div className="hor_container">
+                        <SearchPanel/>
+                    </div>
+                    <Modal.Dialog>
+                        <Modal.Header closeButton onHide={this.close}>
+                            <Modal.Title>История</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            <HistoryList items={this.props.historyState.routes}/>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={this.close}>Close</Button>
+                        </Modal.Footer>
+
+                    </Modal.Dialog>
                 </div>
-                <MapGoogle/>
-            </div>
-        )
+            )
+        } else {
+            return (
+                <div className="main_page_container">
+                    <Header/>
+                    <div className="hor_container">
+                        <SearchPanel/>
+                        <div className="history_container">
+                            <HistoryContainer/>
+                        </div>
+                    </div>
+                    <MapGoogle/>
+                </div>
+            )
+        }
+
     }
 }
 
@@ -137,14 +176,17 @@ function mapStore(state) {
     return {
         store: state.MPI_mainPageState,
         currentPosition: state.PUI_positionUser,
-        userStore: state.RPI_routesPartState
+        userStore: state.RPI_routesPartState,
+        historyState: state.HI_historyState,
     }
 }
 
 function mapDispatches(dispatch) {
     return {
         actions: bindActionCreators(PositionActions, dispatch),
-        apiActions: bindActionCreators(SendPosition, dispatch)
+        apiActions: bindActionCreators(SendPosition, dispatch),
+        historyActions: bindActionCreators(HistoryActions, dispatch)
+
     }
 }
 

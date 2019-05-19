@@ -11,7 +11,7 @@
     min-width: 300px;
     vertical-align: center;
 
-    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    /*box-shadow: 0 0 10px rgba(0,0,0,0.5); !* Параметры тени *!*/
     /*margin-left: 140px;*/
     margin-right: 140px;
     /*margin-top: 100px;*/
@@ -23,11 +23,10 @@
     justify-content: center;
     align-content: center;
     align-items: center;
-    position: absolute;
     background: white;
-    z-index: 150;
-    top: 50px;
-    left: 50px;
+    /*z-index: 150;*/
+    /*top: 50px;*/
+    /*left: 50px;*/
 }
 
 .title-history {

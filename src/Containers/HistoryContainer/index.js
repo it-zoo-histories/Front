@@ -5,6 +5,8 @@ import * as HistoryActions from '../../Store/HistoryPart/actions'
 import * as AuthActions from '../../Store/Auth/actions'
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 class HistoryContainer extends Component {
 
@@ -20,9 +22,6 @@ class HistoryContainer extends Component {
         //items={this.props.historyState.routes}
         const {blockOpen} = this.props.historyState;
         return (
-            blockOpen ?
-            <HistoryList items={this.props.historyState.routes}/>
-            :
             null
         )
     }

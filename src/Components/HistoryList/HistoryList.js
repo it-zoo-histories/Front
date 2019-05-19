@@ -25,7 +25,6 @@ export class HistoryList extends Component {
             console.log("items", this.props.items)
             return (
                 <div className="container-history">
-                    <div className="title-history"> История</div>
                     <div className="history">
                         {
                             this.props.items.map(function (item) {

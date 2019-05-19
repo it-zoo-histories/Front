@@ -13,6 +13,7 @@ import ErrorPage from '../../Containers/ErrorPage';
 import LoginForm from '../../Containers/LoginForm';
 import RegistrationForm from '../../Containers/RegistrationForm';
 import OAuth2RedirectHandler from "../oauth2/OAuth2RedirectHandler";
+import TestVibrate from '../TestVibrate';
 
 export default function Routers() {
     return (
@@ -22,6 +23,7 @@ export default function Routers() {
                 <Route path="/signup" component={RegistrationForm}/>
                 <Route exact path="/" component={MainPageContainer}/>
                 <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}/>
+                <Route path="/test_vibrate" component={TestVibrate} />
                 <Route component={ErrorPage} />
             </Switch>
         </Router>

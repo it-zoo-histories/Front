@@ -16,6 +16,8 @@ body{
 }
 .container {
     width:100%;
+    display: flex;
+    flex-direction: row;
     /* position: relative; */
 }
 
@@ -23,6 +25,8 @@ body{
     font-family: "Cookie", sans-serif;
     font-size:32px;
     cursor: pointer;
+    margin-right: auto;
+    margin-bottom: 15px;
 }
 
 .name {

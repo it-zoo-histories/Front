@@ -17,8 +17,9 @@ class Header extends Component {
     }
     handleOpen = (event) => {
         console.log("Opened menu")
+        const {openUserMenu} = this.props.store;
         // let state = event.target.getAttribute("openUserMenu");        
-        this.props.headerActions.changeStateHeaderMenu(true);
+        this.props.headerActions.changeStateHeaderMenu(!openUserMenu);
     }
     render() {
         console.log("[HEADER]: ", this.props.store); 
@@ -31,12 +32,13 @@ class Header extends Component {
                         <span className="name">
                         Stopy-singer
                         </span>
-                        <div 
+                        
+                    </span>
+                    <div 
                             className="user_menu_stater" 
                             openUserMenu={openUserMenu}
                             onClick={this.handleOpen.bind(this)}
                             style={{textAlign: "right"}}>Меню</div>  
-                    </span>
                 <div className="user_menu_container">
                     {
                         openUserMenu ?

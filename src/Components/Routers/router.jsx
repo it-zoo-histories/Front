@@ -21,7 +21,7 @@ export default function Routers() {
             <Switch>
                 <Route path="/login" component={LoginForm}/>
                 <Route path="/signup" component={RegistrationForm}/>
-                <Route exact path="/" component={MainPageContainer}/>
+                <PrivateRoute exact path="/" component={MainPageContainer}/>
                 <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}/>
                 <Route path="/test_vibrate" component={TestVibrate} />
                 <Route component={ErrorPage} />

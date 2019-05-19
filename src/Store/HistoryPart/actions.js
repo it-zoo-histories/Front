@@ -1,11 +1,27 @@
 import * as types from './constants'
 import HistoryService from '../../Services/Routes/HistoryService'
+import AuthService from '../../Services/Routes/AuthService';
+import { GET_CURRENT_USER } from '../Auth/constants';
 
+
+export function GetHistoryCurrentUser(){
+    return dispatch => {
+        let resp = AuthService.getCurrentUser()
+
+        resp.then(resp => {
+            dispatch({
+                type: GET_CURRENT_USER,
+                payload: resp
+            })
+            dispatch(fetchedHistory(resp.id))
+        })
+    }
+}
 
 export function fetchedHistory(userId) {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch fetchedHistory");
+            // console.log("Dispatch fetchedHistory");
 
             const fetchedHistory = HistoryService.getHistory(userId);
 

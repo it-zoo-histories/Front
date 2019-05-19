@@ -88,8 +88,9 @@ class MapContainer extends Component{
                 <YMaps 
                 onApiAvaliable={ymaps => this.handleApiAvaliable(ymaps)}
                 >
-                    <Map width={window.innerWidth - 100}
-                    height={window.innerHeight - 280}
+                    <Map 
+                    width={window.innerWidth - 100}
+                    height={window.innerHeight - 550}
                     state={{center: [55.02942,82.92646], zoom: 16 }} onClick={this.handleClick.bind(this)}
                     instanceRef={ref => (this.map = ref)}
                     >

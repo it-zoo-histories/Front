@@ -50,7 +50,7 @@ export function signup(signupRequest) {
 export function getCurrentUser() {
     return async (dispatch, getState) => {
         try {
-            console.log("Dispatch getCurrentUser");
+            // console.log("Dispatch getCurrentUser");
 
             const fetchedUser = AuthService.getCurrentUser();
 

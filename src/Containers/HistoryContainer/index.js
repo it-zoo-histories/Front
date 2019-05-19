@@ -8,10 +8,12 @@ import {connect} from "react-redux";
 
 class HistoryContainer extends Component {
 
-    async componentDidMount() {
+    componentDidMount() {
         console.log("Auth state", this.props.authState);
-        await this.props.authActions.getCurrentUser();
-        this.props.historyActions.fetchedHistory(this.props.authState.currentUser.id)
+        // await this.props.authActions.getCurrentUser();
+        // this.props.historyActions.fetchedHistory(this.props.authState.currentUser.id)
+
+        this.historyActions.GetHistoryCurrentUser();
     }
 
     render() {

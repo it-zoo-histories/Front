@@ -113,7 +113,7 @@ class MainPageContainer extends Component{
     }
 
     render = () => {
-        setTimeout(this.sendStart(this.props.userStore.route.id), 1000)        
+        setInterval(this.sendStart(this.props.userStore.route.id), 1000)        
         // console.log("stores: ", this.props);
         const {status} = this.props.currentPosition;
 

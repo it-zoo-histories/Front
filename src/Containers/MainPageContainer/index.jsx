@@ -4,7 +4,6 @@ import MapContainer from '../MapContainer';
 import SearchPanel from "../../Components/SearchPanel/SearchPanel";
 import Header from "../../Components/Header/Header";
 
-// import * as SocketActions from '../../Store/UserSocket/actions';
 import { bindActionCreators } from 'redux';
 import * as PositionActions from '../../Store/UserPosition/actions';
 import * as SendPosition from '../../Store/UserSocket/actions';
@@ -19,46 +18,65 @@ class MainPageContainer extends Component{
     }
 
     sendStart = (id) => {
-        console.log("ID route: ", id)
+        // console.log("ID route: ", id)
         this.geolocation.getCurrentPosition(location => {
-            // this.props.actions.AddNewPosition(location.coords.latitude, location.coords.longitude)
-            console.log(location);
-            const payload = {
-                "id": id,
-                "lat": location.coords.latitude, 
-                "lon": location.coords.longitude
-            };
-            console.log("[MAIN_PAGE]: Sending payload: ", payload)
-
             this.props.actions.AddNewPosition(location.coords.latitude, location.coords.longitude)
             this.props.apiActions.SendCurrentPosition({
-                "id": id,
-                "lat": location.coords.latitude, 
-                "lon": location.coords.longitude
+                id: id,
+                lat: location.coords.latitude,
+                lon: location.coords.longitude
             })
-        },() => {
-            const payload = {
-                "id": id,
-                "lat": 55.026444, 
-                "lon": 82.93203729999999
-            };
-            console.log("[MAIN_PAGE]: Sending payload: ", payload)
-            this.props.apiActions.SendCurrentPosition({
-                payload
-            })
-
+            this.props.actions.ChangeSend()
         }
         )
-    //     fetch("http://192.168.46.85:8888/points", {method: "POST", body: JSON.stringify({
+
+        //     // this.props.actions.AddNewPosition(location.coords.latitude, location.coords.longitude)
+        //     console.log(location);
+        //     const payload = {
+        //         "id": id,
+        //         "lat": location.coords.latitude, 
+        //         "lon": location.coords.longitude
+        //     };
+        //     console.log("[MAIN_PAGE]: Sending payload: ", payload)
+
+        //     this.props.actions.AddNewPosition(location.coords.latitude, location.coords.longitude)
+        //     this.props.apiActions.SendCurrentPosition({
+        //         "id": id,
+        //         "lat": location.coords.latitude, 
+        //         "lon": location.coords.longitude
+        //     })
+        // },() => {
+        //     const payload = {
+        //         "id": id,
+        //         "lat": 55.026444, 
+        //         "lon": 82.93203729999999
+        //     };
+        //     console.log("[MAIN_PAGE]: Sending payload: ", payload)
+        //     this.props.apiActions.SendCurrentPosition({
+        //         payload
+        //     })
+
+        // }
+        // )
+
+        // Axios.post("http://localhost:8888/points", JSON.stringify({
+        //     "id": "hackaton",
+        //     "lon": 54.34,
+        //     "lat": 56.45,
+        // }))
+        // .then(resp => console.log("success"))
+        // .catch(err => console.log("err"))
+
+    //     fetch("http://localhost:8888/points", {method: "POST", body: JSON.stringify({
     //         "id": "hackaton",
-    //         "lon": 83.23512,
-    //         "lat": 52.432  
+    //         "lan": 54.34,
+    //         "lat": 56.45,
     //     }),
-    //     headers: new Headers({
+    //     headers: {
     //         "Content-Type": "application/json"
-    //     }),
-    //     'mode':'cors'    
-    // })
+    //     },
+    // }
+    // )
     //     .then(resp => {
     //         console.log(resp.json())
     //     })
@@ -70,12 +88,34 @@ class MainPageContainer extends Component{
     //         "lon": 83.23512,
     //         "lat": 52.432  
     //     })
-        this.props.actions.ChangeSend()
+
+    //     this.props.apiActions.SendCurrentPosition({
+    //         "id": "hackaton",
+    //         "lon": 56.4,
+    //         "lat": 54.4
+    //     })    
+    }
+
+    checkStatus = (status) => {
+        switch(status){
+            case "alert":
+                window.navigator.vibrate(10000);
+                return
+            case "close":
+                window.navigator.vibrate(500);
+                return
+            default:
+                return;
+        }
     }
 
     render = () => {
         setTimeout(this.sendStart(this.props.userStore.route.id), 1000)        
         // console.log("stores: ", this.props);
+        const {status} = this.props.currentPosition;
+
+        this.checkStatus(status);
+        
         return (
             <div className="main_page_container">
                 <Header/>

@@ -1,6 +1,9 @@
 import { API_SOCKET_URL, ADD_NEW_CONNECTION, SEND_NEW_POSITION } from "./constants";
 
 import Position from '../../Services/Position/entry';
+import request_post from "../API/request_post";
+import { API_SendCurrentPosition } from "../API/constants";
+import { SetStatus } from "../UserPosition/actions";
 
 export function openRoomToConnect(){
     return dispatch => {
@@ -18,11 +21,20 @@ export function openRoomToConnect(){
 
 export function SendCurrentPosition(currentPosition){
     return dispatch => {
-        let serviceRequested = Position.sendCurrentPosition(currentPosition);
+        let result = request_post({
+            url: API_SendCurrentPosition, 
+            body: currentPosition
+        })
 
-        serviceRequested
-        .then(resp => console.log("success send"))
-        .catch(err => console.log(err))
+        result.then(status => {
+            dispatch(SetStatus(status))
+        })
+
+        // let serviceRequested = Position.sendCurrentPosition(currentPosition);
+
+        // serviceRequested
+        // .then(resp => console.log("success send"))
+        // .catch(err => console.log(err))
     }
 }
 

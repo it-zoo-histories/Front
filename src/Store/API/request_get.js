@@ -1,7 +1,6 @@
 const request_get = (opt) => {
     return fetch(opt.url, {
-        headers: {
-        }
+        method: "GET"
     })
     .then(response =>
         response.json().then(json => {

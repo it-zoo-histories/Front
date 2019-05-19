@@ -1,12 +1,13 @@
-import {API_BASE_URL} from "../../Store/API/constants";
 import request from "../../Store/API/requests";
+import {API_HISTORY_ROUTE} from "../../Store/API/routes";
 
 
 class HistoryService {
 
-    async getHistory() {
+
+    async getHistory(userId) {
         return await request({
-            url: API_BASE_URL + "/history",
+            url: API_HISTORY_ROUTE + `?user_id=${userId}`,
             method: "GET"
         })
     }
@@ -14,8 +15,11 @@ class HistoryService {
     async postHistory(history) {
         console.log("Pushed history");
         return await request({
-            url: API_BASE_URL + "/history",
-            method: "POST"
+            url: API_HISTORY_ROUTE,
+            method: "POST",
+            body: JSON.stringify(history)
         })
     }
 }
+
+export default new HistoryService()

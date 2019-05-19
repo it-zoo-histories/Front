@@ -3,10 +3,13 @@ import {connect} from 'react-redux';
 import MapContainer from '../MapContainer';
 import SearchPanel from "../../Components/SearchPanel/SearchPanel";
 import Header from "../../Components/Header/Header";
+import './style.scss'
 
 import { bindActionCreators } from 'redux';
 import * as PositionActions from '../../Store/UserPosition/actions';
 import * as SendPosition from '../../Store/UserSocket/actions';
+import {HistoryList} from "../../Components/HistoryList/HistoryList";
+import HistoryContainer from "../HistoryContainer";
 
 class MainPageContainer extends Component{
     constructor(props){
@@ -119,7 +122,10 @@ class MainPageContainer extends Component{
         return (
             <div className="main_page_container">
                 <Header/>
+                <div className="hor_container">
                 <SearchPanel/>
+                <HistoryContainer/>
+                </div>
                 <MapContainer/>
             </div>
         )

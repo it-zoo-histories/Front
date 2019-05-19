@@ -56,3 +56,11 @@ export function addHistory(history) {
         }
     }
 }
+
+
+export function ChangeStateHistoryBlock(state){
+    return {
+        type: types.CHANGE_STATE_HISTORY_PART,
+        payload: state
+    }
+}

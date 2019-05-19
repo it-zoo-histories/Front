@@ -9,7 +9,6 @@ import MapGoogle from '../GoogleMap';
 import {bindActionCreators} from 'redux';
 import * as PositionActions from '../../Store/UserPosition/actions';
 import * as SendPosition from '../../Store/UserSocket/actions';
-import {HistoryList} from "../../Components/HistoryList/HistoryList";
 import HistoryContainer from "../HistoryContainer";
 
 class MainPageContainer extends Component {

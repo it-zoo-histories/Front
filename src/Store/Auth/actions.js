@@ -1,5 +1,6 @@
 import * as types from './constants';
 import AuthService from '../../Services/Routes/AuthService'
+import { ACCESS_TOKEN } from '../API/constants';
 
 /**
  * make loginRequest to our server
@@ -70,5 +71,19 @@ export function getCurrentUser() {
 export function inverseAuthenticated() {
     return {
         type: types.REVERSE_AUTHENTICATED, payload: null,
+    }
+}
+
+function logoutPayloadToStore(){
+    return {
+        type: types.LOGOUT,
+        payload: null
+    }
+}
+
+export function logout(){
+    return dispatch => {
+        localStorage.removeItem(ACCESS_TOKEN)
+        dispatch(logoutPayloadToStore())
     }
 }

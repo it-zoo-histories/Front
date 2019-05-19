@@ -9,6 +9,7 @@ import UCI_userCredentialsState from '../UserCredentials/reducer';
 import AU_authState from '../Auth/reducer'
 import RPI_routesPartState from '../RoutesPart/reducer';
 import PUI_positionUser from '../UserPosition/reducer';
+import HPI_headerPartState from '../HeaderPart/reducer';
 
 export default combineReducers({
     MPI_mainPageState,
@@ -20,4 +21,5 @@ export default combineReducers({
     AU_authState,
     RPI_routesPartState,
     PUI_positionUser,
+    HPI_headerPartState
 })

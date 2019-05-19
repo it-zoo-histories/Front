@@ -18,8 +18,12 @@ class HistoryContainer extends Component {
 
     render() {
         //items={this.props.historyState.routes}
+        const {blockOpen} = this.props.historyState;
         return (
+            blockOpen ?
             <HistoryList items={this.props.historyState.routes}/>
+            :
+            null
         )
     }
 }

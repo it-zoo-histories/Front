@@ -30,11 +30,6 @@ export function SendCurrentPosition(currentPosition){
             dispatch(SetStatus(status))
         })
 
-        // let serviceRequested = Position.sendCurrentPosition(currentPosition);
-
-        // serviceRequested
-        // .then(resp => console.log("success send"))
-        // .catch(err => console.log(err))
     }
 }
 

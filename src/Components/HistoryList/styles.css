@@ -24,6 +24,8 @@
     align-content: center;
     align-items: center;
     position: absolute;
+    background: white;
+    z-index: 150;
     top: 50px;
     left: 50px;
 }

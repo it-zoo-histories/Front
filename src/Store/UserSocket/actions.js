@@ -29,7 +29,6 @@ export function SendCurrentPosition(currentPosition){
         result.then(status => {
             dispatch(SetStatus(status))
         })
-
     }
 }
 

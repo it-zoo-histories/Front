@@ -5,7 +5,7 @@ class Position{
     async sendCurrentPosition(body){
         return await request_post({
             url: API_SendCurrentPosition,
-            body: body.payload
+            body: body
         })
     }
 }

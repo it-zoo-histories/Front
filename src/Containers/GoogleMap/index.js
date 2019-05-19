@@ -32,7 +32,7 @@ class MapGoogle extends Component {
             <MapWithAMarker
                 googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVDIDgBruUmqbhE9ZSeq8DA-Hf-RYy0uk&v=3.exp&libraries=geometry,drawing,places"
                 loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `400px` }} />}
+                containerElement={<div style={{ height: window.innerHeight - 150 }} />}
                 mapElement={<div style={{ height: `100%` }} />}
                 points = {this.props.store.points}
             />

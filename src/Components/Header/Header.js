@@ -31,7 +31,6 @@ class Header extends Component {
                         <span className="name">
                         Stopy-singer
                         </span>
-                        <a href="#"><span></span></a>
                         <div 
                             className="user_menu_stater" 
                             openUserMenu={openUserMenu}
